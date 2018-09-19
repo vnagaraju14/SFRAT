@@ -22,7 +22,6 @@ class Failure_DataSet:
 		self.data['FT'] = self.data_ft
 
 
-spreadsheet = pd.read_excel('/home/jesh/Documents/SRT/srt.core/model_testing/model_data.xlsx')
-dataset = Failure_DataSet(spreadsheet['IF'])
-print(dataset.data['FT'])
-#implement checking for range status then find missing columns and add to class
+spreadsheet = pd.read_excel(sys.argv[1])		#supply file name as first arg 
+dataset = Failure_DataSet(spreadsheet['IF'])	#example, can change to IF or FT
+print(dataset.data['FT'])						#show new created FT branch
