@@ -1,0 +1,21 @@
+import pandas as pd
+
+file_location = 'model_data.xlsx'
+df=pd.read_excel(file_location)
+
+
+def IF_to_FT(interfailure):
+    failure_T=[]
+    failure_T.append(interfailure.IF[0])
+    n = 1
+    for x in range(n, len(interfailure.IF)):
+        failure_T.append(interfailure.IF[x] + failure_T[x-1])
+    return failure_T
+
+def FT_to_IF(failure_T):
+    interfailure=[]
+    interfailure.append(failure_T.FT[0])
+    n = 1
+    for x in range(n, len(failure_T.FT)):
+        interfailure.append(failure_T.FT[x] - failure_T.FT[x-1]) 
+    return interfailure
